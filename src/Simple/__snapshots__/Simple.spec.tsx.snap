@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Simple component should have basic snapshoot 1`] = `
+<div>
+  <h1>
+    Simple form
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <C
+      component={[Function]}
+      label="email"
+      name="email"
+    />
+    <button
+      className="outline"
+      disabled={true}
+      type="button"
+    >
+      Reset
+    </button>
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;

@@ -1,10 +1,27 @@
-import {FormikProps} from "formik";
+import {FormikActions, FormikHandlers, FormikProps} from "formik";
 
-export function formikConfig<T> (options: Partial<FormikProps<T>>): FormikProps<T> {
+export function getMockedFormikConfig<T>(options: Partial<FormikProps<T>> = {}): FormikProps<T> {
   return {
+    ...getMockedFormikActions(),
+    ...getMockedFormikHandles(),
     enableReinitialize: false,
-    handleBlur: jest.fn(),
-    handleChange: jest.fn(),
+    isValidating: false,
+    isSubmitting: false,
+    dirty: false,
+    isValid: false,
+    submitCount: 0,
+    registerField: jest.fn(),
+    unregisterField: jest.fn(),
+    values: {} as T,
+    errors: {} as T,
+    initialValues: {} as T,
+    touched: {} as T,
+    ...options
+  }
+}
+
+export function getMockedFormikActions<V>(): FormikActions<V> {
+  return {
     setStatus: jest.fn(),
     setError: jest.fn(),
     setErrors: jest.fn(),
@@ -19,19 +36,14 @@ export function formikConfig<T> (options: Partial<FormikProps<T>>): FormikProps<
     resetForm: jest.fn(),
     submitForm: jest.fn(),
     setFormikState: jest.fn(),
-    isValidating: false,
-    isSubmitting: false,
-    submitCount: 0,
+  }
+}
+
+export function getMockedFormikHandles(): FormikHandlers {
+  return {
     handleSubmit: jest.fn(),
     handleReset: jest.fn(),
-    dirty: false,
-    isValid: false,
-    registerField: jest.fn(),
-    unregisterField: jest.fn(),
-    values: {} as T,
-    errors: {} as T,
-    initialValues: {} as T,
-    touched: {} as T,
-    ...options
+    handleBlur: jest.fn(),
+    handleChange: jest.fn(),
   }
 }

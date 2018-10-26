@@ -3,16 +3,17 @@ import * as Yup from "yup";
 import { Simple} from "./Simple";
 import {ISimpleFormValues, ISimpleProps} from "./Simple.types";
 
+export const handleSubmit = (values: ISimpleFormValues, {setSubmitting, }: FormikBag<ISimpleProps, ISimpleFormValues>) => {
+  setTimeout(() => {
+    setSubmitting(false);
+
+  }, 2000);
+};
+
 
 export const SimpleContainer =  withFormik<ISimpleProps, ISimpleFormValues>({
   displayName: 'SimpleForm',
-  handleSubmit: (values: ISimpleFormValues, {setSubmitting, }: FormikBag<ISimpleProps, ISimpleFormValues>): void => {
-    setTimeout(() => {
-      console.log({values});
-      setSubmitting(false);
-
-    }, 2000);
-  },
+  handleSubmit,
   mapPropsToValues: (props: ISimpleProps): ISimpleFormValues => ({
     email: ''
   }),

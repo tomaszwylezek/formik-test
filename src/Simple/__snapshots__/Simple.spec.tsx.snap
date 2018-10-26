@@ -16,11 +16,13 @@ exports[`Simple component should have basic snapshoot 1`] = `
     <button
       className="outline"
       disabled={true}
+      onClick={[Function]}
       type="button"
     >
       Reset
     </button>
     <button
+      disabled={false}
       type="submit"
     >
       Submit

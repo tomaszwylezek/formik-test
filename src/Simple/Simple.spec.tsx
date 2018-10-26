@@ -3,13 +3,11 @@ import * as React from 'react';
 import {Simple} from './Simple';
 import {FormikProps} from "formik";
 import {ISimpleFormValues} from "./Simple.types";
-import {formikConfig} from "../testUtils/formik";
+import {getMockedFormikConfig} from "../testUtils/formik";
 
 describe('Simple component', () => {
   it('should have basic snapshoot', () => {
-    const mock = jest.fn();
-
-    const options: FormikProps<ISimpleFormValues> = formikConfig<ISimpleFormValues>({
+    const options: FormikProps<ISimpleFormValues> = getMockedFormikConfig<ISimpleFormValues>({
       errors: {
         email: ''
       },
@@ -28,6 +26,5 @@ describe('Simple component', () => {
 
     component.find('form').simulate('submit');
     expect(component).toMatchSnapshot();
-    expect(mock).toHaveBeenCalled();
   });
 });

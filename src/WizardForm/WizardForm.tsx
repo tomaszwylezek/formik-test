@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import {FormikProps } from 'formik';
+import {FormikProps} from 'formik';
 import {FirstStep} from "./FirstStep/FirstStep";
 import {SecondStep} from "./SecondStep/SecondStep";
 import {ThirdStep} from "./ThirdStep/ThirdStep";
@@ -14,13 +14,14 @@ export class WizardForm extends React.Component<IWizardFormProps & FormikProps<I
   };
 
   public renderPage(page) {
+    const {dirty, errors: {firstStep, secondStep, thirdStep}} = this.props;
     switch (page) {
       case 1:
-        return <FirstStep setPage={this.setPage} isValid={() => {console.log()}} />;
+        return <FirstStep setPage={this.setPage} isValid={dirty && !firstStep}/>;
       case 2:
-        return <SecondStep setPage={this.setPage} isValid={() => {console.log()}} />;
+        return <SecondStep setPage={this.setPage} isValid={dirty && !secondStep}/>;
       case 3:
-        return <ThirdStep setPage={this.setPage} isValid={() => {console.log()}} />;
+        return <ThirdStep setPage={this.setPage} isValid={dirty && !thirdStep}/>;
       default:
         return null;
     }
@@ -39,7 +40,7 @@ export class WizardForm extends React.Component<IWizardFormProps & FormikProps<I
       isSubmitting,
       handleSubmit,
       handleReset,
-      isValid
+      isValid,
     } = this.props;
 
     return (

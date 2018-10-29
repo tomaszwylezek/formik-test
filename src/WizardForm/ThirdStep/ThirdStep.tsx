@@ -7,7 +7,7 @@ export const ThirdStep = ({setPage, isValid}) => {
   return (
     <div>
       <Field component={InputComponent} name="thirdStep.lastName" label="thirdStep.lastName"/>
-      <button disabled={isValid('thirdStep')} onClick={() => setPage(1)}>
+      <button disabled={!isValid} onClick={() => setPage(1)}>
         Submit
       </button>
     </div>

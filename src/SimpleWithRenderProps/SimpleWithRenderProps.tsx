@@ -21,13 +21,16 @@ export class SimpleWithRenderProps extends React.Component<ISimpleWithRenderProp
           }}
           validationSchema={Yup.object().shape({
             email: Yup.string().email('Invalid email addres').required('Required'),
+            name: Yup.string().min(3, 'too short').required('Required'),
           })}
           initialValues={{
-            email: ''
+            email: '',
+            name: ''
           }}
           render={({handleReset, handleSubmit, dirty, isSubmitting}: FormikProps<ISimpleWithRenderPropsFormValues>) => (
             <form onSubmit={handleSubmit}>
               <Field component={InputComponent} name="email" label="email"/>
+              <Field component={InputComponent} name="name" label="name"/>
               <button
                 type="button"
                 className="outline"

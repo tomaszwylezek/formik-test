@@ -25,12 +25,13 @@ export const WizardFormContainer = withFormik<IWizardFormProps, IWizardFormFormV
       lastName: ''
     },
   }),
+
   validationSchema: Yup.object().shape({
     firstStep: Yup.object().shape({
       email: Yup.string().email('Invalid email addres').required('Required'),
     }),
     secondStep: Yup.object().shape({
-      firstName: Yup.string().min(3, 'Too short name').required('Required'),
+      firstName: Yup.string().min(3, 'Too short name').max(10, 'too logn').required('Required'),
     }),
     thirdStep: Yup.object().shape({
       lastName: Yup.string().min(3, 'Too short lastName').required('Required'),

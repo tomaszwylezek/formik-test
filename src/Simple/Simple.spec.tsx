@@ -25,6 +25,7 @@ describe('Simple component', () => {
     const component = shallow(<Simple {...options}/>);
 
     component.find('form').simulate('submit');
+    expect(options.handleSubmit).toHaveBeenCalled();
     expect(component).toMatchSnapshot();
   });
 });

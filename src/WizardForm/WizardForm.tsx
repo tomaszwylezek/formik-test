@@ -41,6 +41,7 @@ export class WizardForm extends React.Component<IWizardFormProps & FormikProps<I
       handleSubmit,
       handleReset,
       isValid,
+      values
     } = this.props;
 
     return (
@@ -48,6 +49,7 @@ export class WizardForm extends React.Component<IWizardFormProps & FormikProps<I
         <h1>WizardForm form</h1>
         <form onSubmit={handleSubmit}>
           {
+
             this.renderPage(this.state.page)
           }
           <button
@@ -58,6 +60,7 @@ export class WizardForm extends React.Component<IWizardFormProps & FormikProps<I
           >
             Reset
           </button>
+          {values.secondStep.firstName === 'xdd' ? <div>hahah xddd</div>: null}
           <button type="submit" disabled={isSubmitting || !isValid}>
             Submit
           </button>

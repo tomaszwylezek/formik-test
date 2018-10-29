@@ -6,6 +6,7 @@ import {SimpleContainer} from "./Simple/Simple.container";
 import {SimpleWithRenderProps} from "./SimpleWithRenderProps/SimpleWithRenderProps";
 import {store} from "./store";
 import {WithAsyncValidateContainer} from "./WithAsyncValidate/WithAsyncValidate.container";
+import {WizardFormContainer} from "./WizardForm/WizardForm.container";
 
 
 class App extends React.Component {
@@ -28,6 +29,9 @@ class App extends React.Component {
               <li>
                 <Link to="/withAsyncValidate">WithAsyncValidate</Link>
               </li>
+              <li>
+                <Link to="/wizard">Wizard form</Link>
+              </li>
             </ul>
             <hr/>
             <div style={{
@@ -38,6 +42,7 @@ class App extends React.Component {
               <Route path="/simple" component={SimpleContainer}/>
               <Route path="/simpleWithRenderProps" component={SimpleWithRenderProps}/>
               <Route path="/withAsyncValidate" component={WithAsyncValidateContainer}/>
+              <Route path="/wizard" component={WizardFormContainer}/>
             </div>
           </div>
         </Router>
